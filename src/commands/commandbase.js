@@ -5,6 +5,6 @@ export class CommandBase {
     supportsCommand(commandstring){
         return this._command === commandstring;
     }
-    async performCommand(args){}
+    async performCommand(cwd, args){}
 
 }

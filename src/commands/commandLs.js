@@ -4,7 +4,7 @@ class CommandLs extends CommandBase{
     constructor(){
         super('ls');
     }
-    async performCommand(args){
+    async performCommand(cwd, args){
         try{
             return await fs.readdir('./');
         }
