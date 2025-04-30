@@ -1,10 +1,10 @@
-class commandBase {
+export class CommandBase {
     constructor(commandstring){
         this._command = commandstring;
     }
     supportsCommand(commandstring){
         return this._command === commandstring;
     }
-    performCommand(commandstring, args){}
+    async performCommand(args){}
 
 }
