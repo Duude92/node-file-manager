@@ -10,10 +10,11 @@ class CommandBuilder{
             fscommands.createCommandCd(),
             fscommands.createCommandCat(),
             fscommands.createCommandAdd(),
-            fscommands.createCommandMkdir()
+            fscommands.createCommandMkdir(),
+            fscommands.createCommandRn(),
         ];
     }
-
+    
     getCommand = (command) => {
         const commandString = command.split(' ')[0];
         let commandObject = this._commandList.find((commandObj) => commandObj.supportsCommand(commandString));
