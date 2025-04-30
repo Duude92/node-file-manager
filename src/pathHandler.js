@@ -8,4 +8,4 @@ class PathHandler {
         return this._cwd;
     }
 }
-export const createPathHandler = () => new PathHandler(os.homedir);
+export const createPathHandler = () => new PathHandler(os.homedir());
