@@ -2,6 +2,7 @@ import { createCommandExit } from "./commandExit.js";
 import { createCommandLs } from "./commandLs.js";
 import { createCommandUp } from "./commandUp.js";
 import { createCommandCd } from "./commandCd.js";
+import { createCommandCat } from "./commandCat.js";
 
 class CommandBuilder{
     constructor() {
@@ -9,7 +10,8 @@ class CommandBuilder{
             createCommandLs(), 
             createCommandExit(),
             createCommandUp(),
-            createCommandCd()
+            createCommandCd(),
+            createCommandCat()
         ];
     }
 
