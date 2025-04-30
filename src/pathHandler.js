@@ -1,4 +1,5 @@
 import os from 'node:os'
+import path from 'node:path';
 class PathHandler {
     constructor(homePath) {
         this._homepath = homePath;
@@ -7,6 +8,10 @@ class PathHandler {
     get cwd() {
         return this._cwd;
     }
+    cd(relativePath){
+        this._cwd = path.resolve(this._cwd, relativePath);
+    }
+
 }
 const pathHandler = new PathHandler(os.homedir());
 export const getPathHandler = () => pathHandler;
