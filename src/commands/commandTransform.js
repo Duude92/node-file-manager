@@ -6,13 +6,26 @@ const commandBuilder = createCommandBuilder();
 const pathHandler = getPathHandler();
 const transformStream = new Transform({
     transform(chunk, encoding, callback) {
-        const command = commandBuilder.getCommand(chunk.toString().trim());
-        const args = chunk.toString().trim().split(' ').slice(1);
-        command.performCommand(pathHandler.cwd, args).then((result) => {
-            result = result.join('\n') + os.EOL;
-            this.push(result);
+        try {
+            const command = commandBuilder.getCommand(chunk.toString().trim());
+            const args = chunk.toString().trim().split(' ').slice(1);
+            command.performCommand(pathHandler.cwd, args).then((result) => {
+                try {
+                    let newResult = result.join('\n') + os.EOL + '> ';
+                    this.push(newResult);
+                    callback();
+                }
+                catch (error) {
+                    this.push(`Command result error: ${error.message}` + os.EOL + '> ');
+                    callback();
+                }
+            });
+        }
+        catch (error) {
+            this.push(`Command error: ${error.message}` + os.EOL + '> ');
             callback();
-        });
+        }
+
     }
 });
 export const createTransformStream = () => transformStream;
