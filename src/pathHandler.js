@@ -8,6 +8,9 @@ class PathHandler {
     get cwd() {
         return this._cwd;
     }
+    get homepath() {
+        return this._homepath;
+    }
     cd(relativePath){
         this._cwd = path.resolve(this._cwd, relativePath);
     }
