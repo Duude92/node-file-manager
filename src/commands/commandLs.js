@@ -6,6 +6,7 @@ class CommandLs extends CommandBase{
     }
     async performCommand(cwd, args){
         try{
+            if(!!args) return await fs.readdir(args[0]);
             return await fs.readdir('./');
         }
         catch(err){
