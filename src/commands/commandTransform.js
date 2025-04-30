@@ -11,18 +11,17 @@ const transformStream = new Transform({
             const args = chunk.toString().trim().split(' ').slice(1);
             command.performCommand(pathHandler.cwd, args).then((result) => {
                 try {
-                    let newResult = result.join('\n') + os.EOL + '> ';
-                    this.push(newResult);
+                    this.push(os.EOL + '> ');
                     callback();
                 }
                 catch (error) {
-                    this.push(`Command result error: ${error.message}` + os.EOL + '> ');
+                    this.push(`Operation failed:\n ${error}` + os.EOL + '> ');
                     callback();
                 }
             });
         }
         catch (error) {
-            this.push(`Command error: ${error.message}` + os.EOL + '> ');
+            this.push(`Invalid input: ${chunk.toString().trim()}` + os.EOL + '> ');
             callback();
         }
 
