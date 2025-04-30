@@ -12,6 +12,7 @@ class PathHandler {
     get homepath() {
         return this._homepath;
     }
+    // FIXME: Throw error if path is not valid
     cd(relativePath) {
         this._cwd = path.resolve(this._cwd, relativePath);
     }
