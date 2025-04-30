@@ -1,17 +1,15 @@
 import fs from 'node:fs/promises';
 import { CommandBase } from './commandBase.js';
+import { getFileType } from './filetypeResolver.js';
 class CommandLs extends CommandBase {
     constructor() {
         super('ls');
     }
     async performCommand(cwd, args) {
-        try {
-            return await fs.readdir((!!args[0]) && args[0] || cwd);
-        }
-        catch (err) {
-            console.error('Error reading directory:', err);
-            return 'Error reading directory';
-        }
+        const dirContent = await fs.readdir((!!args[0]) && args[0] || cwd, { withFileTypes: true });
+        const result = dirContent.map((file) => ({ Name: file.name, Type: getFileType(file) }));
+        console.table(result);
+        return '';
     }
 }
 export const createCommandLs = () => new CommandLs();
