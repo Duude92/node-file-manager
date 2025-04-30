@@ -18,12 +18,9 @@ const transformStream = new Transform({
             const command = commandBuilder.getCommand(input);
             const args = input.split(' ').slice(1);
             command.performCommand(pathHandler.cwd, args).then((result) => {
-                try {
-                    displayResult('');
-                }
-                catch (error) {
-                    displayResult(`Operation failed:\n ${error}`);
-                }
+                displayResult('');
+            }).catch((error) => {
+                displayResult(`Operation failed:\n ${error}`);
             });
         }
         catch (error) {
