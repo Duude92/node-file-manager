@@ -12,6 +12,7 @@ class CommandBuilder{
             fscommands.createCommandAdd(),
             fscommands.createCommandMkdir(),
             fscommands.createCommandRn(),
+            fscommands.createCommandCp(),
         ];
     }
     

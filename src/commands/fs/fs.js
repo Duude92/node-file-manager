@@ -5,6 +5,7 @@ import { createCommandCat } from "./commandCat.js";
 import { createCommandAdd } from "./commandAdd.js";
 import { createCommandMkdir } from "./commandMkdir.js";
 import { createCommandRn } from "./commandRn.js";
+import { createCommandCp } from "./commandCp.js";
 
 export {
     createCommandLs,
@@ -14,4 +15,5 @@ export {
     createCommandAdd,
     createCommandMkdir,
     createCommandRn,
+    createCommandCp,
 }
