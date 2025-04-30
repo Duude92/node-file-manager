@@ -1,8 +1,12 @@
+import { createCommandExit } from "./commandExit.js";
 import { createCommandLs } from "./commandLs.js";
 
 class CommandBuilder{
     constructor() {
-        this._commandList = [createCommandLs()];
+        this._commandList = [
+            createCommandLs(), 
+            createCommandExit()
+        ];
     }
 
     getCommand = (command) => {
