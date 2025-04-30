@@ -1,23 +1,14 @@
-import * as fscommands from './fs/fs.js'
+import { fsCommands } from './fs/fs.js'
 import { createCommandExit } from "./commandExit.js";
 
-class CommandBuilder{
+class CommandBuilder {
     constructor() {
         this._commandList = [
             createCommandExit(),
-            fscommands.createCommandLs(), 
-            fscommands.createCommandUp(),
-            fscommands.createCommandCd(),
-            fscommands.createCommandCat(),
-            fscommands.createCommandAdd(),
-            fscommands.createCommandMkdir(),
-            fscommands.createCommandRn(),
-            fscommands.createCommandCp(),
-            fscommands.createCommandMv(),
-            fscommands.createCommandRm()
+            ...fsCommands,
         ];
     }
-    
+
     getCommand = (command) => {
         const commandString = command.split(' ')[0];
         let commandObject = this._commandList.find((commandObj) => commandObj.supportsCommand(commandString));

@@ -7,17 +7,18 @@ import { createCommandMkdir } from "./commandMkdir.js";
 import { createCommandRn } from "./commandRn.js";
 import { createCommandCp } from "./commandCp.js";
 import { createCommandMv } from "./commandMv.js";
-import {createCommandRm} from "./commandRm.js";
+import { createCommandRm } from "./commandRm.js";
 
-export {
-    createCommandLs,
-    createCommandUp,
-    createCommandCd,
-    createCommandCat,
-    createCommandAdd,
-    createCommandMkdir,
-    createCommandRn,
-    createCommandCp,
-    createCommandMv,
-    createCommandRm
-}
+const fsCommands = [
+    createCommandLs(),
+    createCommandUp(),
+    createCommandCd(),
+    createCommandCat(),
+    createCommandAdd(),
+    createCommandMkdir(),
+    createCommandRn(),
+    createCommandCp(),
+    createCommandMv(),
+    createCommandRm()
+]
+export { fsCommands }
