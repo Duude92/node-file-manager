@@ -1,4 +1,6 @@
 import * as messages from './messages.mjs'
-export const displayGreeting = (username) => console.log(messages.greeting(username));
-export const displayGoodbye = (username) => console.log(messages.goodbye(username));
+let _username = '';
+export const displayGreeting = () => console.log(messages.greeting(_username));
+export const displayGoodbye = () => console.log(messages.goodbye(_username));
 export const displayCwd = (directory) => console.log(messages.cwd(directory));
+export const setUsername = (username) => _username = username;

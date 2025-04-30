@@ -7,12 +7,13 @@ import os from 'node:os';
 // I've added verification if the username is provided in the command line arguments, if not it will use 'Anonymous' as default.
 const username = process.argv[2] && process.argv[2].split('=')[1] || 'Anonymous';
 const pathHandler = getPathHandler();
-messageManager.displayGreeting(username);
+messageManager.setUsername(username);
+messageManager.displayGreeting();
 messageManager.displayCwd(pathHandler.cwd);
 process.stdout.write('> ');
 process.on('SIGINT', () => {
     process.stdout.write(os.EOL);
-    messageManager.displayGoodbye(username);
+    messageManager.displayGoodbye();
     process.exit(0);
 });
 await pipeline(process.stdin, createTransformStream(), process.stdout, { end: false });
