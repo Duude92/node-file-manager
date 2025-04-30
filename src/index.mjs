@@ -1,6 +1,5 @@
 import process from 'node:process'
 import * as messageManager from './messages/messageManager.mjs';
-import { Transform } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
 import { createPathHandler } from './pathHandler.js';
 import { createTransformStream } from './commands/commandTransform.js';
