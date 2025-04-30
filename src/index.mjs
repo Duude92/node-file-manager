@@ -9,7 +9,7 @@ const username = process.argv[2] && process.argv[2].split('=')[1] || 'Anonymous'
 const pathHandler = getPathHandler();
 messageManager.setUsername(username);
 messageManager.displayGreeting();
-messageManager.displayCwd(pathHandler.cwd);
+messageManager.displayCwd();
 process.stdout.write('> ');
 process.on('SIGINT', () => {
     process.stdout.write(os.EOL);
