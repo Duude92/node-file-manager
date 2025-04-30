@@ -4,6 +4,7 @@ import { createCommandUp } from "./commandUp.js";
 import { createCommandCd } from "./commandCd.js";
 import { createCommandCat } from "./commandCat.js";
 import { createCommandAdd } from "./commandAdd.js";
+import { createCommandMkdir } from "./commandMkdir.js";
 
 class CommandBuilder{
     constructor() {
@@ -13,7 +14,8 @@ class CommandBuilder{
             createCommandUp(),
             createCommandCd(),
             createCommandCat(),
-            createCommandAdd()
+            createCommandAdd(),
+            createCommandMkdir()
         ];
     }
 
