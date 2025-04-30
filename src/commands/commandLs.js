@@ -6,7 +6,7 @@ class CommandLs extends CommandBase {
         super('ls');
     }
     async performCommand(cwd, args) {
-        const dirContent = (await fs.readdir((!!args[0]) && args[0] || cwd, { withFileTypes: true }));
+        const dirContent = await this._pathHandler.ls((!!args[0]) && args[0] || cwd);
         await dirContent.sort((a, b) => a.name.localeCompare(b.name))
         await dirContent.sort((a, b) => a.isDirectory() && !b.isDirectory() ? -1 : 1);
 
