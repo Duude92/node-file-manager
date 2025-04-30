@@ -1,5 +1,5 @@
-import { getPathHandler } from "../pathHandler.js";
-import { CommandBase } from "./commandBase.js";
+import { getPathHandler } from "../../pathHandler.js";
+import { CommandBase } from "../commandBase.js";
 
 class CommandUp extends CommandBase{
     constructor() {

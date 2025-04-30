@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { CommandBase } from './commandBase.js';
+import { CommandBase } from '../commandBase.js';
 import { getFileType } from './filetypeResolver.js';
 class CommandLs extends CommandBase {
     constructor() {

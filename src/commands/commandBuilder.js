@@ -1,21 +1,16 @@
+import * as fscommands from './fs/fs.js'
 import { createCommandExit } from "./commandExit.js";
-import { createCommandLs } from "./commandLs.js";
-import { createCommandUp } from "./commandUp.js";
-import { createCommandCd } from "./commandCd.js";
-import { createCommandCat } from "./commandCat.js";
-import { createCommandAdd } from "./commandAdd.js";
-import { createCommandMkdir } from "./commandMkdir.js";
 
 class CommandBuilder{
     constructor() {
         this._commandList = [
-            createCommandLs(), 
             createCommandExit(),
-            createCommandUp(),
-            createCommandCd(),
-            createCommandCat(),
-            createCommandAdd(),
-            createCommandMkdir()
+            fscommands.createCommandLs(), 
+            fscommands.createCommandUp(),
+            fscommands.createCommandCd(),
+            fscommands.createCommandCat(),
+            fscommands.createCommandAdd(),
+            fscommands.createCommandMkdir()
         ];
     }
 

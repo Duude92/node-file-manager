@@ -1,5 +1,5 @@
-import { CommandBase } from "./commandbase.js";
-import { getPathHandler } from "../pathHandler.js";
+import { CommandBase } from "../commandbase.js";
+import { getPathHandler } from "../../pathHandler.js";
 
 class CommandCd extends CommandBase{
     constructor() {

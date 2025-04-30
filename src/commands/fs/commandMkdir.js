@@ -1,4 +1,4 @@
-import { CommandBase } from "./commandBase.js";
+import { CommandBase } from "../commandBase.js";
 import fs from 'node:fs/promises';
 
 class CommandMkdir extends CommandBase {
