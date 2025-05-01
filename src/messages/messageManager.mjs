@@ -1,8 +1,10 @@
 import { getPathHandler } from '../pathHandler.js';
 import * as messages from './messages.mjs'
+import { ForegroundColor } from './colors.js';
 let _username = '';
 const _pathHandler = getPathHandler();
-export const displayGreeting = () => console.log(messages.greeting(_username));
-export const displayGoodbye = () => console.log(messages.goodbye(_username));
-export const displayCwd = () => console.log(messages.cwd(_pathHandler.cwd));
+const colorConsoleLog = (message, color) => console.log(`\x1b[${color}m${message}\x1b[0m`);
+export const displayGreeting = () => colorConsoleLog(messages.greeting(_username), ForegroundColor.Green);
+export const displayGoodbye = () => colorConsoleLog(messages.goodbye(_username), ForegroundColor.Green);
+export const displayCwd = () => colorConsoleLog(messages.cwd(_pathHandler.cwd), ForegroundColor.Yellow);
 export const setUsername = (username) => _username = username;
