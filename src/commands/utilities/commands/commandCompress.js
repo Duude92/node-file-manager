@@ -22,4 +22,4 @@ class CommandCompress extends CommandBase {
         displayResultLine(`${sourcePath} compressed successfully into ${destinationPath}`);
     }
 }
-export const createCommandCompress = () => new CommandCompress();
+export const createCommand = () => new CommandCompress();

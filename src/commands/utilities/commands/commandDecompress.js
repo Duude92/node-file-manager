@@ -22,4 +22,4 @@ class CommandDecompress extends CommandBase {
         displayResultLine(`${sourceFile} decompressed successfully into ${destinationPath}`);
     }
 }
-export const createCommandDecompress = () => new CommandDecompress();
+export const createCommand = () => new CommandDecompress();

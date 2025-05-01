@@ -19,4 +19,4 @@ class CommandHash extends CommandBase {
         displayResultLine(`Hash of ${filePath}: ${hash}`);
     }
 }
-export const createCommandHash = () => new CommandHash();
+export const createCommand = () => new CommandHash();

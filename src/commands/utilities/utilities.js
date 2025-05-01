@@ -1,10 +1,5 @@
-import { createCommandCompress } from "./utilitycommands/commandCompress.js";
-import { createCommandDecompress } from "./utilitycommands/commandDecompress.js";
-import { createCommandHash } from "./utilitycommands/commandHash.js";
+import { CommandLoader } from "../commandLoader.js";
 
-const utilities = [
-    createCommandHash(),
-    createCommandCompress(),
-    createCommandDecompress()
-]
-export { utilities }
+const loader = new CommandLoader("./utilities/");
+const utilities = await loader.commands;
+export { utilities };
