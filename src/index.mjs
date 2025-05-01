@@ -3,6 +3,7 @@ import * as messageManager from './messages/messageManager.mjs';
 import { pipeline } from 'node:stream/promises';
 import { createTransformStream } from './commands/commandTransform.js';
 import os from 'node:os';
+import { getUserHandler } from './userHandler.js';
 const DOUBLE_HYPHEN_ONLY = true;
 // I've added verification if the username is provided in the command line arguments, if not it will use 'Anonymous' as default.
 const getUsername = () => {
@@ -13,8 +14,9 @@ const getUsername = () => {
     return arg && arg.split('=')[1]
         || 'Anonymous';
 }
-
-messageManager.setUsername(getUsername());
+let userhandler = getUserHandler();
+userhandler.username = getUsername();
+messageManager.setUsername(userhandler.username);
 messageManager.displayGreeting();
 messageManager.displayCwd();
 process.stdout.write('> ');
