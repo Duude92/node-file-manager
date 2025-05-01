@@ -8,4 +8,5 @@ export const displayGreeting = () => colorConsoleLog(messages.greeting(_username
 export const displayGoodbye = () => colorConsoleLog(messages.goodbye(_username), ForegroundColor.Green);
 export const displayCwd = () => colorConsoleLog(messages.cwd(_pathHandler.cwd), ForegroundColor.Yellow);
 export const displayError = (error) => colorConsoleLog(error, ForegroundColor.Red);
+export const displayResultLine = (result) => colorConsoleLog(result, ForegroundColor.Blue);
 export const setUsername = (username) => _username = username;
