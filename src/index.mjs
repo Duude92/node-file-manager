@@ -4,7 +4,7 @@ import { pipeline } from 'node:stream/promises';
 import { createTransformStream } from './commands/commandTransform.js';
 import os from 'node:os';
 import { getUserHandler } from './userHandler.js';
-const DOUBLE_HYPHEN_ONLY = true;
+import { DOUBLE_HYPHEN_ONLY } from './appconfig.js';
 // I've added verification if the username is provided in the command line arguments, if not it will use 'Anonymous' as default.
 const getUsername = () => {
     // Fix powershell npm processing arguments with double hyphen
