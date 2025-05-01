@@ -1,5 +1,8 @@
+import fs from "node:fs";
 import { CommandBase } from "../../commandBase.js";
-import fs from 'node:fs/promises';
+import { pipeline } from "node:stream/promises";
+import { displayResultLine } from "../../../messages/messageManager.mjs";
+import fsPromise from "node:fs/promises";
 
 class CommandCp extends CommandBase {
     constructor() {
@@ -12,7 +15,17 @@ class CommandCp extends CommandBase {
         }
         const sourcePath = this._pathHandler.resolvePath(args[0]);
         const destinationPath = this._pathHandler.resolvePath(args[1]);
-        await fs.copyFile(sourcePath, destinationPath, fs.constants.COPYFILE_EXCL);
+        // Test if sourcePath is accessible to read
+        await fsPromise.access(sourcePath, fsPromise.constants.R_OK);
+        if (!(await fsPromise.lstat(destinationPath)).isFile()) {
+            await fsPromise.cp(sourcePath, destinationPath, { recursive: true });
+            displayResultLine(`Directory content ${sourcePath} successfully copied to ${destinationPath}`);
+            return;
+        }
+        const sourceStream = fs.createReadStream(sourcePath);
+        const destinationStream = fs.createWriteStream(destinationPath, { flags: 'wx' });
+        await pipeline(sourceStream, destinationStream);
+        displayResultLine(`${sourcePath} successfully copied to ${destinationPath}`);
     }
 }
 export const createCommand = () => new CommandCp();
