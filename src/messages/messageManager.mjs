@@ -7,4 +7,5 @@ const colorConsoleLog = (message, color) => console.log(`\x1b[${color}m${message
 export const displayGreeting = () => colorConsoleLog(messages.greeting(_username), ForegroundColor.Green);
 export const displayGoodbye = () => colorConsoleLog(messages.goodbye(_username), ForegroundColor.Green);
 export const displayCwd = () => colorConsoleLog(messages.cwd(_pathHandler.cwd), ForegroundColor.Yellow);
+export const displayError = (error) => colorConsoleLog(error, ForegroundColor.Red);
 export const setUsername = (username) => _username = username;
