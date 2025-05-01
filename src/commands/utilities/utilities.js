@@ -1,5 +1,4 @@
-import { CommandLoader } from "../commandLoader.js";
+import { getCommands } from "../commandLoader.js";
 
-const loader = new CommandLoader("./utilities/");
-const utilities = await loader.commands;
+const utilities = await getCommands("./utilities/");
 export { utilities };
