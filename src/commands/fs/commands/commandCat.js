@@ -1,20 +1,16 @@
 import { CommandBase } from "../../commandBase.js";
-import fs from 'node:fs/promises';
+import { createReadStream } from "node:fs";
+import { pipeline } from "node:stream/promises";
+
 const encoding = 'utf8';
 
 class CommandCat extends CommandBase {
     constructor() {
         super("cat");
     }
-
     async performCommand(args) {
-        try {
-            const filePath = this._pathHandler.resolvePath(args[0]);
-            console.log(await fs.readFile(filePath, encoding));
-        }
-        catch (error) {
-            throw error;
-        }
+        const filePath = this._pathHandler.resolvePath(args[0]);
+        await pipeline(createReadStream(filePath, encoding), process.stdout, { end: false });
     }
 }
 export const createCommand = () => new CommandCat();
