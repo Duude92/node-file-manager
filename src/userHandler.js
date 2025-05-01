@@ -1,3 +1,4 @@
+import * as messageManager from './messages/messageManager.mjs';
 class UserHandler {
     constructor() {
         this._username = '';
@@ -10,6 +11,8 @@ class UserHandler {
     set username(newUsername) {
         this._username = newUsername;
     }
+    greet() { messageManager.displayGreeting(this._username); }
+    goodbye() { messageManager.displayGoodbye(this._username); }
 }
 const userHandler = new UserHandler();
 export const getUserHandler = () => userHandler;

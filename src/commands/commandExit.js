@@ -1,5 +1,6 @@
 import { CommandBase } from "./commandBase.js";
 import * as messageManager from '../messages/messageManager.mjs';
+import { getUserHandler } from "../userHandler.js";
 // Include both 'exit' and '.exit' as valid commands
 const regexp = /^\.?exit$/;
 
@@ -12,7 +13,7 @@ class CommandExit extends CommandBase {
         return this._regexp.test(commandstring);
     }
     async performCommand(args) {
-        messageManager.displayGoodbye();
+        getUserHandler().goodbye();
         process.exit(0);
     }
 }

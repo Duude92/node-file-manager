@@ -16,13 +16,12 @@ const getUsername = () => {
 }
 let userhandler = getUserHandler();
 userhandler.username = getUsername();
-messageManager.setUsername(userhandler.username);
-messageManager.displayGreeting();
+userhandler.greet();
 messageManager.displayCwd();
 process.stdout.write('> ');
 process.on('SIGINT', () => {
     process.stdout.write(os.EOL);
-    messageManager.displayGoodbye();
+    userhandler.goodbye();
     process.exit(0);
 });
 await pipeline(process.stdin, createTransformStream(), process.stdout, { end: false }); 
