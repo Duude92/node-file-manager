@@ -1,13 +1,15 @@
 import { fsCommands } from './fs/fs.js'
 import { createCommandExit } from "./commandExit.js";
 import { utilities } from './utilities/utilities.js';
+import { createCommandOs } from './os/os.js';
 
 class CommandBuilder {
     constructor() {
         this._commandList = [
             createCommandExit(),
             ...fsCommands,
-            ...utilities
+            ...utilities,
+            createCommandOs(),
         ];
     }
 
