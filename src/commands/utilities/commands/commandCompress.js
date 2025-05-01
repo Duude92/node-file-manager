@@ -1,5 +1,5 @@
 import { CommandBase } from "../../commandBase.js";
-import { createGzip } from "node:zlib"
+import { createBrotliCompress } from "node:zlib"
 import { createReadStream, createWriteStream } from "node:fs";
 import { displayResultLine } from "../../../messages/messageManager.mjs";
 import { pipeline } from 'node:stream/promises';
@@ -17,8 +17,8 @@ class CommandCompress extends CommandBase {
         const destinationPath = this._pathHandler.resolvePath(args[1]);
         const sourceFile = createReadStream(sourcePath);
         const destinationFile = createWriteStream(destinationPath);
-        const gzip = createGzip();
-        await pipeline(sourceFile, gzip, destinationFile);
+        const brotli = createBrotliCompress();
+        await pipeline(sourceFile, brotli, destinationFile);
         displayResultLine(`${sourcePath} compressed successfully into ${destinationPath}`);
     }
 }
