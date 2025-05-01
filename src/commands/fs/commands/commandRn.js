@@ -1,4 +1,4 @@
-import { CommandBase } from "../commandBase.js";
+import { CommandBase } from "../../commandBase.js";
 import fs from 'node:fs/promises';
 
 class CommandRn extends CommandBase {
@@ -15,4 +15,4 @@ class CommandRn extends CommandBase {
         await fs.rename(oldPath, newPath);
     }
 }
-export const createCommandRn = () => new CommandRn();
+export const createCommand = () => new CommandRn();

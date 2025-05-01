@@ -1,4 +1,4 @@
-import { CommandBase } from "../commandBase.js";
+import { CommandBase } from "../../commandBase.js";
 import fs from 'node:fs/promises';
 
 class CommandMkdir extends CommandBase {
@@ -13,4 +13,4 @@ class CommandMkdir extends CommandBase {
             .then(() => console.log(`Directory created: ${dirPath}`));
     }
 }
-export const createCommandMkdir = () => new CommandMkdir();
+export const createCommand = () => new CommandMkdir();

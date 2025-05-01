@@ -1,4 +1,4 @@
-import { CommandBase } from "../commandBase.js";
+import { CommandBase } from "../../commandBase.js";
 import fs from 'node:fs/promises';
 
 class CommandMv extends CommandBase {
@@ -15,4 +15,4 @@ class CommandMv extends CommandBase {
         await fs.rename(sourcePath, destinationPath);
     }
 }
-export const createCommandMv = () => new CommandMv();
+export const createCommand = () => new CommandMv();

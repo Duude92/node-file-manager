@@ -1,4 +1,4 @@
-import { CommandBase } from "../commandBase.js";
+import { CommandBase } from "../../commandBase.js";
 import fs from 'node:fs/promises';
 const encoding = 'utf8';
 
@@ -17,4 +17,4 @@ class CommandCat extends CommandBase {
         }
     }
 }
-export const createCommandCat = () => new CommandCat();
+export const createCommand = () => new CommandCat();

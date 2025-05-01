@@ -1,4 +1,4 @@
-import { CommandBase } from "../commandBase.js";
+import { CommandBase } from "../../commandBase.js";
 import fs from 'node:fs/promises';
 
 class CommandRm extends CommandBase {
@@ -11,4 +11,4 @@ class CommandRm extends CommandBase {
         await fs.unlink(filePath);
     }
 }
-export const createCommandRm = () => new CommandRm();
+export const createCommand = () => new CommandRm();

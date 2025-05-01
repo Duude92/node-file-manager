@@ -1,5 +1,5 @@
-import { getPathHandler } from "../../pathHandler.js";
-import { CommandBase } from "../commandBase.js";
+import { getPathHandler } from "../../../pathHandler.js";
+import { CommandBase } from "../../commandBase.js";
 
 class CommandUp extends CommandBase {
     constructor() {
@@ -10,4 +10,4 @@ class CommandUp extends CommandBase {
         this._pathHandler.cd('..');
     }
 }
-export const createCommandUp = () => new CommandUp();
+export const createCommand = () => new CommandUp();

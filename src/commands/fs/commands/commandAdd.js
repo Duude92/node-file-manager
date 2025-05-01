@@ -1,4 +1,4 @@
-import { CommandBase } from "../commandBase.js";
+import { CommandBase } from "../../commandBase.js";
 import fs from 'node:fs/promises';
 
 class CommandAdd extends CommandBase {
@@ -11,4 +11,4 @@ class CommandAdd extends CommandBase {
         await fs.writeFile(filePath, '', { flag: 'wx' });
     }
 }
-export const createCommandAdd = () => new CommandAdd();
+export const createCommand = () => new CommandAdd();

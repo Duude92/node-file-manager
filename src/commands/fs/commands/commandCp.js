@@ -1,4 +1,4 @@
-import { CommandBase } from "../commandBase.js";
+import { CommandBase } from "../../commandBase.js";
 import fs from 'node:fs/promises';
 
 class CommandCp extends CommandBase {
@@ -15,4 +15,4 @@ class CommandCp extends CommandBase {
         await fs.copyFile(sourcePath, destinationPath, fs.constants.COPYFILE_EXCL);
     }
 }
-export const createCommandCp = () => new CommandCp();
+export const createCommand = () => new CommandCp();

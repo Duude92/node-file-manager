@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
-import { CommandBase } from '../commandBase.js';
-import { getFileType } from './filetypeResolver.js';
+import { CommandBase } from '../../commandBase.js';
+import { getFileType } from '../filetypeResolver.js';
 class CommandLs extends CommandBase {
     constructor() {
         super('ls');
@@ -15,4 +15,4 @@ class CommandLs extends CommandBase {
         return '';
     }
 }
-export const createCommandLs = () => new CommandLs();
+export const createCommand = () => new CommandLs();
