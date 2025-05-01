@@ -1,7 +1,7 @@
 import { CommandBase } from "./commandBase.js";
 import * as messageManager from '../messages/messageManager.mjs';
 // Include both 'exit' and '.exit' as valid commands
-const regexp = /^\.?exit/;
+const regexp = /^\.?exit$/;
 
 class CommandExit extends CommandBase {
     constructor() {
