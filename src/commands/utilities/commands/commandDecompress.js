@@ -9,7 +9,7 @@ class CommandDecompress extends CommandBase {
         super("decompress");
     }
 
-    async performCommand(cwd, args) {
+    async performCommand(args) {
         if (args.length < 2) {
             throw new Error("Invalid number of arguments. Usage: compress <source> <destination>");
         }

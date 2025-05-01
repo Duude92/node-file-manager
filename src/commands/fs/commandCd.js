@@ -1,12 +1,12 @@
-import { CommandBase } from "../commandbase.js";
 import { getPathHandler } from "../../pathHandler.js";
+import { CommandBase } from "../commandBase.js";
 
-class CommandCd extends CommandBase{
+class CommandCd extends CommandBase {
     constructor() {
         super('cd');
         this._pathHandler = getPathHandler();
     }
-    async performCommand(cwd, args) {
+    async performCommand(args) {
         if (args.length === 0) {
             this._pathHandler.cd(this._pathHandler.homepath);
             return;

@@ -8,7 +8,7 @@ class CommandHash extends CommandBase {
         super("hash");
     }
 
-    async performCommand(cwd, args) {
+    async performCommand(args) {
         if (args.length === 0) {
             throw new Error("No arguments provided for hash command.");
         }

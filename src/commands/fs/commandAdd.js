@@ -6,7 +6,7 @@ class CommandAdd extends CommandBase {
         super("add");
     }
 
-    async performCommand(cwd, args) {
+    async performCommand(args) {
         const filePath = this._pathHandler.resolvePath(args[0]);
         await fs.writeFile(filePath, '', { flag: 'wx' });
     }

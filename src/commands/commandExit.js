@@ -11,7 +11,7 @@ class CommandExit extends CommandBase {
     supportsCommand(commandstring){
         return this._regexp.test(commandstring);
     }
-    async performCommand(cwd, args) {
+    async performCommand(args) {
         messageManager.displayGoodbye();
         process.exit(0);
     }

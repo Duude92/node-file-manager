@@ -4,7 +4,6 @@ import os from 'node:os';
 import { getPathHandler } from '../pathHandler.js';
 import { displayCwd, displayError } from '../messages/messageManager.mjs';
 const commandBuilder = createCommandBuilder();
-const pathHandler = getPathHandler();
 const transformStream = new Transform({
     transform(chunk, encoding, callback) {
         const input = chunk.toString().trim();
@@ -17,7 +16,7 @@ const transformStream = new Transform({
         try {
             const command = commandBuilder.getCommand(input);
             const args = input.split(' ').slice(1);
-            command.performCommand(pathHandler.cwd, args).then((result) => {
+            command.performCommand(args).then((result) => {
                 displayCommandFooter();
             }).catch((error) => {
                 displayError(`Operation failed:\n ${error}`);

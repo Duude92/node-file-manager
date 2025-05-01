@@ -7,7 +7,7 @@ class CommandCat extends CommandBase {
         super("cat");
     }
 
-    async performCommand(cwd, args) {
+    async performCommand(args) {
         try {
             const filePath = this._pathHandler.resolvePath(args[0]);
             console.log(await fs.readFile(filePath, encoding));

@@ -6,7 +6,7 @@ class CommandMv extends CommandBase {
         super("mv");
     }
     //FIXME: add check if destination path exists
-    async performCommand(cwd, args) {
+    async performCommand(args) {
         if (args.length < 2) {
             throw new Error("Not enough arguments. Usage: mv <source> <destination>");
         }
