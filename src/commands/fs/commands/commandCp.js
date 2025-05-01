@@ -17,7 +17,7 @@ class CommandCp extends CommandBase {
         const destinationPath = this._pathHandler.resolvePath(args[1]);
         // Test if sourcePath is accessible to read
         await fsPromise.access(sourcePath, fsPromise.constants.R_OK);
-        if (!(await fsPromise.lstat(destinationPath)).isFile()) {
+        if (!(await fsPromise.lstat(sourcePath)).isFile()) {
             await fsPromise.cp(sourcePath, destinationPath, { recursive: true });
             displayResultLine(`Directory content ${sourcePath} successfully copied to ${destinationPath}`);
             return;
