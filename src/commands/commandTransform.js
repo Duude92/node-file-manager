@@ -1,7 +1,7 @@
 import {Transform} from 'node:stream';
 import {createCommandBuilder} from './commandBuilder.js';
 import {EOL} from 'node:os';
-import {displayCwd, displayError} from '../messages/messageManager.mjs';
+import {displayCwd, displayError} from '#MessageManager';
 
 const commandBuilder = createCommandBuilder();
 const transformStream = new Transform({
