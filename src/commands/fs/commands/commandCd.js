@@ -1,4 +1,4 @@
-import { getPathHandler } from "../../../pathHandler.js";
+import { getPathHandler } from "../../../pathService.js";
 import { CommandBase } from "../../commandBase.js";
 
 class CommandCd extends CommandBase {
@@ -8,7 +8,7 @@ class CommandCd extends CommandBase {
     }
     async performCommand(args) {
         if (args.length === 0) {
-            await this._pathHandler.cd(this._pathHandler.homepath);
+            await this._pathHandler.cd(this._pathHandler.homePath);
             return;
         }
         const path = args[0];

@@ -1,4 +1,4 @@
-import { getPathHandler } from '../pathHandler.js';
+import { getPathHandler } from '../pathService.js';
 import * as messages from './messages.mjs'
 import { ForegroundColor } from './colors.js';
 const _pathHandler = getPathHandler();

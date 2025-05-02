@@ -6,7 +6,7 @@ class CommandHome extends CommandBase {
         super('--homedir');
     }
     async performCommand(argv) {
-        const homeDir = this._pathHandler.homepath;
+        const homeDir = this._pathHandler.homePath;
         displayResultLine(`Home Directory: ${homeDir}`);
     }
 }

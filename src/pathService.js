@@ -2,7 +2,7 @@ import os from 'node:os'
 import path from 'node:path';
 import fs from 'node:fs/promises';
 
-class PathHandler {
+class PathService {
     constructor(homePath) {
         this._homepath = homePath;
         this._cwd = homePath;
@@ -12,7 +12,7 @@ class PathHandler {
         return this._cwd;
     }
 
-    get homepath() {
+    get homePath() {
         return this._homepath;
     }
 
@@ -32,5 +32,5 @@ class PathHandler {
     }
 }
 
-const pathHandler = new PathHandler(os.homedir());
+const pathHandler = new PathService(os.homedir());
 export const getPathHandler = () => pathHandler;

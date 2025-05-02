@@ -1,7 +1,6 @@
 import { Transform } from 'node:stream';
 import { createCommandBuilder } from './commandBuilder.js';
 import os from 'node:os';
-import { getPathHandler } from '../pathHandler.js';
 import { displayCwd, displayError } from '../messages/messageManager.mjs';
 const commandBuilder = createCommandBuilder();
 const transformStream = new Transform({
