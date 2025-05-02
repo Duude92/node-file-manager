@@ -8,7 +8,13 @@ const encoding = 'utf8';
 class CommandCat extends CommandBase {
     constructor() {
         super("cat");
+        this._usage = `cat [FILE]`;
+        this._description = 'Print FILE content to stdout';
     }
+    validateParameters(args) {
+        return args.length > 0;
+    }
+
     async performCommand(args) {
         const filePath = this._pathHandler.resolvePath(args[0]);
         await pipeline(createReadStream(filePath, encoding), process.stdout, { end: false });
