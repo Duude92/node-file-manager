@@ -4,6 +4,7 @@ export class CommandBase {
     constructor(commandString) {
         this._command = commandString;
         this._pathHandler = getPathHandler();
+        this._usage = ''
     }
 
     supportsCommand(commandString) {
