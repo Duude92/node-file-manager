@@ -8,11 +8,11 @@ class CommandCd extends CommandBase {
     }
     async performCommand(args) {
         if (args.length === 0) {
-            this._pathHandler.cd(this._pathHandler.homepath);
+            await this._pathHandler.cd(this._pathHandler.homepath);
             return;
         }
         const path = args[0];
-        this._pathHandler.cd(path);
+        await this._pathHandler.cd(path);
     }
 }
 export const createCommand = () => new CommandCd();

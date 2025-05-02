@@ -7,7 +7,7 @@ class CommandUp extends CommandBase {
         this._pathHandler = getPathHandler();
     }
     async performCommand(args) {
-        this._pathHandler.cd('..');
+        await this._pathHandler.cd('..');
     }
 }
 export const createCommand = () => new CommandUp();
