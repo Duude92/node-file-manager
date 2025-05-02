@@ -1,18 +1,28 @@
 import fs from 'node:fs/promises';
-import { CommandBase } from '../../commandBase.js';
-import { getFileType } from '../filetypeResolver.js';
+import {CommandBase} from '../../commandBase.js';
+import {getFileType} from '../filetypeResolver.js';
+import {STRICT_COMMANDS} from "../../../appconfig.js";
+
 class CommandLs extends CommandBase {
     constructor() {
         super('ls');
+        this._usage = `ls`;
+        this._description = `Print in console list of all files and folders in current directory.`;
     }
-    async performCommand(args) {
-        const dirContent = await this._pathHandler.ls((!!args[0]) && args[0] || this._pathHandler.cwd);
-        await dirContent.sort((a, b) => a.name.localeCompare(b.name))
-        await dirContent.sort((a, b) => a.isDirectory() && !b.isDirectory() ? -1 : 1);
 
-        const result = dirContent.map((file) => ({ Name: file.name, Type: getFileType(file) }));
+    validateParameters(args) {
+        return args.length === 0;
+    }
+
+    async performCommand(args) {
+        const dirContent = await this._pathHandler.ls(STRICT_COMMANDS ? '.' : (!!args[0]) && args[0] || this._pathHandler.cwd);
+        dirContent.sort((a, b) => a.name.localeCompare(b.name))
+        dirContent.sort((a, b) => a.isDirectory() && !b.isDirectory() ? -1 : 1);
+
+        const result = dirContent.map((file) => ({Name: file.name, Type: getFileType(file)}));
         console.table(result);
         return '';
     }
 }
+
 export const createCommand = () => new CommandLs();
