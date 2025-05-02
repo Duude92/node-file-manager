@@ -24,7 +24,7 @@ const transformStream = new Transform({
             command.performCommand(args).then(() => {
                 displayCommandFooter();
             }).catch((error) => {
-                displayError(`Operation failed:\n ${error}`);
+                displayError(`Operation failed:${EOL}${error}`);
                 displayCommandFooter();
             });
         } catch (error) {
@@ -33,7 +33,7 @@ const transformStream = new Transform({
                     displayError(error);
                     break;
                 default:
-                    displayError(`Invalid input: ${input}`);
+                    displayError(`Invalid input: ${input}${EOL}${error}`);
             }
             displayCommandFooter();
         }
