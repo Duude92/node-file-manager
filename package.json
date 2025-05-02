@@ -4,7 +4,8 @@
   "description": "rsschool-nodejs-project",
   "main": "src/index.mjs",
   "imports": {
-    "#CommandBase" : "./src/commands/commandbase.js"
+    "#CommandBase" : "./src/commands/commandbase.js",
+    "#MessageManager" : "./src/messages/messageManager.js"
   },
   "type": "module",
   "scripts": {
