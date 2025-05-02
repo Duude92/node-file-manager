@@ -7,12 +7,14 @@ import { pipeline } from 'node:stream/promises';
 class CommandCompress extends CommandBase {
     constructor() {
         super("compress");
+        this._usage = `compress [FILENAME] [ARCHIVENAME]`;
+        this._description = `Archives FILENAME into ARCHIVENAME`;
+    }
+    validateParameters(args) {
+        return args.length > 1;
     }
 
     async performCommand(args) {
-        if (args.length < 2) {
-            throw new Error("Invalid number of arguments. Usage: compress <source> <destination>");
-        }
         const sourcePath = this._pathHandler.resolvePath(args[0]);
         const destinationPath = this._pathHandler.resolvePath(args[1]);
         const sourceFile = createReadStream(sourcePath);
