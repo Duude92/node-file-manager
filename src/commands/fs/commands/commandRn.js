@@ -14,8 +14,16 @@ class CommandRn extends CommandBase {
         }
         const oldPath = this._pathHandler.resolvePath(args[0]);
         const newPath = this._pathHandler.resolvePath(args[1]);
-        await fs.rename(oldPath, newPath);
-        displayResultLine(`File ${args[0]} was renamed to ${args[1]}`);
+        try {
+            await fs.access(newPath, fs.constants.R_OK);
+            const error = new Error(`${newPath} already exists`);
+            error.code = 'EEXIST';
+            throw error;
+        } catch (e) {
+            if (e.code === 'EEXIST') throw e;
+            await fs.rename(oldPath, newPath);
+            displayResultLine(`File ${args[0]} was renamed to ${args[1]}`);
+        }
     }
 }
 
