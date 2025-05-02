@@ -5,6 +5,7 @@ export class CommandBase {
         this._command = commandString;
         this._pathHandler = getPathHandler();
         this._usage = ''
+        this._description = ''
     }
 
     supportsCommand(commandString) {
@@ -20,5 +21,8 @@ export class CommandBase {
 
     get usage() {
         return this._usage;
+    }
+    get description() {
+        return this._description;
     }
 }
