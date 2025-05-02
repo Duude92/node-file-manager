@@ -1,8 +1,9 @@
-import {displayError} from "../../messages/messageManager.mjs";
 import {CommandBase} from "../commandBase.js";
 import {getCommands} from "../commandLoader.js";
 import {EOL} from "node:os";
 
+// It is possible to compile usage with parameters.map=>parameter.usage \t parameter.description
+// But in my opinion, it wouldn't form such pretty usage text
 const usage = `os [option]
 Options:
     --EOL               Display the end of line character used by the operating system.
@@ -18,7 +19,7 @@ class CommandOs extends CommandBase {
         super('os');
         this._parameters = parameters;
         this._usage = usage;
-        this._description = `Calculates sha256 algorithm hash for FILENAME.`;
+        this._description = `Prints OS information.`;
     }
 
     validateParameters(args) {

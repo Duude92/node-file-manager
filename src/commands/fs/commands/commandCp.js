@@ -12,7 +12,7 @@ class CommandCp extends CommandBase {
     }
 
     validateParameters(args) {
-        return args.length < 2;
+        return args.length > 1;
     }
 
     async performCommand(args) {
