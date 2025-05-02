@@ -8,7 +8,6 @@ class CommandCp extends CommandBase {
     constructor() {
         super("cp");
     }
-    //TODO: Test for existing newpath, EXCLUSEIVE flag should be enough
     async performCommand(args) {
         if (args.length < 2) {
             throw new Error("Not enough arguments. Usage: cp <source> <destination>");
