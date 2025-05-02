@@ -3,7 +3,7 @@ import {CommandBase} from "../commandBase.js";
 import {getCommands} from "../commandLoader.js";
 import {EOL} from "node:os";
 
-const usage = `Usage: os [option]
+const usage = `os [option]
 Options:
     --EOL               Display the end of line character used by the operating system.
     --cpus              Display the number of CPUs.
@@ -17,13 +17,15 @@ class CommandOs extends CommandBase {
     constructor() {
         super('os');
         this._parameters = parameters;
+        this._usage = usage;
+        this._description = `Calculates sha256 algorithm hash for FILENAME.`;
+    }
+
+    validateParameters(args) {
+        return args.length > 0;
     }
 
     async performCommand(args) {
-        if (args.length === 0) {
-            displayError(`Error: No arguments provided for os command.${EOL}${usage}`);
-            return;
-        }
         const command = await this.getCommand(args[0]);
         try {
             command.performCommand();
