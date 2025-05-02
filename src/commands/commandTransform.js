@@ -15,7 +15,7 @@ const transformStream = new Transform({
         try {
             const command = commandBuilder.getCommand(input);
             const args = input.split(' ').slice(1);
-            command.performCommand(args).then((result) => {
+            command.performCommand(args).then(() => {
                 displayCommandFooter();
             }).catch((error) => {
                 displayError(`Operation failed:\n ${error}`);

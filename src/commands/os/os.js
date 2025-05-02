@@ -34,8 +34,7 @@ class CommandOs extends CommandBase {
 
     getCommand = async (command) => {
         const commandString = command.split(' ')[0];
-        let commandObject = this._parameters.find((commandObj) => commandObj.supportsCommand(commandString));
-        return commandObject;
+        return this._parameters.find((commandObj) => commandObj.supportsCommand(commandString));
     }
 }
 

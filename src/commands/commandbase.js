@@ -1,12 +1,12 @@
 import { getPathHandler } from "../pathService.js";
 
 export class CommandBase {
-    constructor(commandstring){
-        this._command = commandstring;
+    constructor(commandString){
+        this._command = commandString;
         this._pathHandler = getPathHandler();
     }
-    supportsCommand(commandstring){
-        return this._command === commandstring;
+    supportsCommand(commandString){
+        return this._command === commandString;
     }
     async performCommand(args){}
 }
