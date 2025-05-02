@@ -1,6 +1,4 @@
-import {getPathHandler} from "../../../pathService.js";
 import {CommandBase} from "../../commandBase.js";
-import {EOL} from "node:os";
 import {STRICT_COMMANDS} from "../../../appconfig.js";
 
 class CommandCd extends CommandBase {
