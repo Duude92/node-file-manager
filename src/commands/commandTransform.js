@@ -17,7 +17,7 @@ const transformStream = new Transform({
             const command = commandBuilder.getCommand(input);
             const args = input.split(' ').slice(1);
             if (!command || !command.validateParameters(args)) {
-                const error = new Error(`Invalid input: ${input}${EOL}Usage: ${command.usage}`);
+                const error = new Error(`Invalid input: ${input}${EOL}Usage: ${command.usage}${EOL}${EOL}${command.description}`);
                 error.code = 'EINVAL';
                 throw error;
             }
