@@ -30,6 +30,18 @@ class PathService {
     resolvePath(relativePath) {
         return path.resolve(this._cwd, relativePath);
     }
+
+    /**
+     * Validates given path to 'name' only
+     * @param pathString input string containing directory name
+     * @returns {boolean}
+     *  **true** if contains directory name only.
+     *  **false** if contains path.
+     */
+    validateDirectoryName(pathString) {
+        const parsedPath = path.parse(pathString);
+        return !(parsedPath.dir || parsedPath.root);
+    }
 }
 
 const pathHandler = new PathService(os.homedir());
