@@ -1,6 +1,6 @@
-import {CommandBase} from "../commandBase.js";
-import {getCommands} from "../commandLoader.js";
-import {EOL} from "node:os";
+import {CommandBase} from '#CommandBase';
+import {getCommands} from '../commandLoader.js';
+import {EOL} from 'node:os';
 
 // It is possible to compile usage with parameters.map=>parameter.usage \t parameter.description
 // But in my opinion, it wouldn't form such pretty usage text

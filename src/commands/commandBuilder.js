@@ -1,5 +1,5 @@
 import {fsCommands} from './fs/fs.js'
-import {createCommandExit} from "./commandExit.js";
+import {createCommandExit} from './commandExit.js';
 import {utilities} from './utilities/utilities.js';
 import {createCommandOs} from './os/os.js';
 

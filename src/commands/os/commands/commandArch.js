@@ -1,6 +1,6 @@
-import { displayResultLine } from "../../../messages/messageManager.mjs";
-import { CommandBase } from "../../commandBase.js";
-import { arch } from "os";
+import { displayResultLine } from '#MessageManager';
+import { CommandBase } from '#CommandBase';
+import { arch } from 'os';
 
 class CommandArch extends CommandBase{
     constructor() {

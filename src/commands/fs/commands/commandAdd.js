@@ -1,7 +1,6 @@
-import {CommandBase} from "../../commandBase.js";
+import {CommandBase} from '#CommandBase';
 import fs from 'node:fs/promises';
-import {displayResultLine} from "../../../messages/messageManager.mjs";
-import {EOL} from "node:os";
+import {displayResultLine} from '#MessageManager';
 
 class CommandAdd extends CommandBase {
     constructor() {

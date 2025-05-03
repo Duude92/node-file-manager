@@ -1,6 +1,6 @@
-import {CommandBase} from "../../commandBase.js";
+import {CommandBase} from '#CommandBase';
 import fs from 'node:fs/promises';
-import {displayResultLine} from "../../../messages/messageManager.mjs";
+import {displayResultLine} from '#MessageManager';
 
 class CommandRn extends CommandBase {
     constructor() {

@@ -1,4 +1,4 @@
-import {getPathHandler} from "../pathService.js";
+import {getPathHandler} from '../pathService.js';
 
 export class CommandBase {
     constructor(commandString) {

@@ -1,4 +1,4 @@
-import * as messageManager from './messages/messageManager.mjs';
+import * as messageManager from '#MessageManager';
 class UserHandler {
     constructor() {
         this._username = '';

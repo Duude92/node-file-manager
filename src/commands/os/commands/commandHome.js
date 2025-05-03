@@ -1,5 +1,5 @@
-import { displayResultLine } from "../../../messages/messageManager.mjs";
-import { CommandBase } from "../../commandBase.js";
+import { displayResultLine } from '#MessageManager';
+import { CommandBase } from '#CommandBase';
 
 class CommandHome extends CommandBase {
     constructor() {

@@ -1,8 +1,8 @@
-import {CommandBase} from "../../commandBase.js";
+import {CommandBase} from '#CommandBase';
 import fsPromise from 'node:fs/promises';
 import fs from 'node:fs';
 import {pipeline} from 'node:stream/promises';
-import {displayResultLine} from "../../../messages/messageManager.mjs";
+import {displayResultLine} from '#MessageManager';
 
 class CommandMv extends CommandBase {
     constructor() {

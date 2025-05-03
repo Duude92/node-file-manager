@@ -1,5 +1,5 @@
-import {CommandBase} from "../../commandBase.js";
-import {STRICT_COMMANDS} from "../../../appconfig.js";
+import {CommandBase} from '#CommandBase';
+import {STRICT_COMMANDS} from '#AppConfig';
 
 class CommandCd extends CommandBase {
     constructor() {

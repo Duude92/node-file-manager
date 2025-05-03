@@ -1,4 +1,4 @@
-import { getCommands } from "../commandLoader.js";
+import { getCommands } from '../commandLoader.js';
 
 
 const fsCommands = await getCommands("./fs/");

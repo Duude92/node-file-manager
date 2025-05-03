@@ -1,7 +1,7 @@
-import { CommandBase } from "../../commandBase.js";
-import { createReadStream } from "node:fs";
-import { pipeline } from "node:stream/promises";
-import { EOL } from "node:os";
+import { CommandBase } from '#CommandBase';
+import { createReadStream } from 'node:fs';
+import { pipeline } from 'node:stream/promises';
+import { EOL } from 'node:os';
 
 const encoding = 'utf8';
 

@@ -1,4 +1,4 @@
-import { getCommands } from "../commandLoader.js";
+import { getCommands } from '../commandLoader.js';
 
 const utilities = await getCommands("./utilities/");
 export { utilities };

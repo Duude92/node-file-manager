@@ -5,7 +5,7 @@
   "main": "src/index.mjs",
   "imports": {
     "#CommandBase" : "./src/commands/commandbase.js",
-    "#MessageManager" : "./src/messages/messageManager.js",
+    "#MessageManager" : "./src/messages/messageManager.mjs",
     "#AppConfig" : "./src/appconfig.js"
   },
   "type": "module",

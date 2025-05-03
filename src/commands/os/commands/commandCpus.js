@@ -1,6 +1,6 @@
-import { displayResultLine } from "../../../messages/messageManager.mjs";
-import { CommandBase } from "../../commandBase.js";
-import { cpus } from "node:os";
+import { displayResultLine } from '#MessageManager';
+import { CommandBase } from '#CommandBase';
+import { cpus } from 'node:os';
 
 class CommandCpus extends CommandBase {
     constructor() {

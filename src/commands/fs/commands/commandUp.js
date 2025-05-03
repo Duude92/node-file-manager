@@ -1,10 +1,8 @@
-import {getPathHandler} from "../../../pathService.js";
-import {CommandBase} from "../../commandBase.js";
+import {CommandBase} from '#CommandBase';
 
 class CommandUp extends CommandBase {
     constructor() {
         super('up');
-        this._pathHandler = getPathHandler();
         this._usage = `up`;
         this._description = `Go upper from current directory.`;
     }

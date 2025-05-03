@@ -1,7 +1,7 @@
-import {CommandBase} from "../../commandBase.js";
-import {createBrotliDecompress} from "node:zlib"
-import {createReadStream, createWriteStream} from "node:fs";
-import {displayResultLine} from "../../../messages/messageManager.mjs";
+import {CommandBase} from '#CommandBase';
+import {createBrotliDecompress} from 'node:zlib'
+import {createReadStream, createWriteStream} from 'node:fs';
+import {displayResultLine} from '#MessageManager';
 import {pipeline} from 'node:stream/promises';
 
 class CommandDecompress extends CommandBase {

@@ -1,6 +1,6 @@
-import {CommandBase} from "#CommandBase";
-import {getUserHandler} from "../userHandler.js";
-import {STRICT_EXIT} from "../appconfig.js";
+import {CommandBase} from '#CommandBase';
+import {getUserHandler} from '../userHandler.js';
+import {STRICT_EXIT} from '#AppConfig';
 // Include both 'exit' and '.exit' as valid commands
 const regexp = STRICT_EXIT ? /^\.exit$/ : /^\.?exit$/;
 

@@ -1,8 +1,8 @@
-import fs from "node:fs";
-import {CommandBase} from "../../commandBase.js";
-import {pipeline} from "node:stream/promises";
-import {displayResultLine} from "../../../messages/messageManager.mjs";
-import fsPromise from "node:fs/promises";
+import fs from 'node:fs';
+import {CommandBase} from '#CommandBase';
+import {pipeline} from 'node:stream/promises';
+import {displayResultLine} from '#MessageManager';
+import fsPromise from 'node:fs/promises';
 
 class CommandCp extends CommandBase {
     constructor() {

@@ -1,6 +1,6 @@
-import { displayResultLine } from "../../../messages/messageManager.mjs";
-import { CommandBase } from "../../commandBase.js";
-import { EOL } from "node:os";
+import { displayResultLine } from '#MessageManager';
+import { CommandBase } from '#CommandBase';
+import { EOL } from 'node:os';
 
 class CommandEol extends CommandBase {
     constructor() {
