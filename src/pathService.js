@@ -38,6 +38,17 @@ class PathService {
     }
 
     /**
+     * Joins two paths string into single one
+     * @param {string} pathA path to join to
+     * @param {string} pathB path that would be joined to the end of pathA
+     * @returns {string} Resulting string
+     */
+    join(pathA, pathB)
+    {
+        return path.join(pathA, pathB);
+    }
+
+    /**
      * Validates given path to 'name' only
      * @param {string} pathString input string containing directory name
      * @returns {boolean}
@@ -47,6 +58,18 @@ class PathService {
     validateSingleDirectoryName(pathString) {
         const parsedPath = path.parse(pathString);
         return !(parsedPath.dir || parsedPath.root);
+    }
+
+    /**
+     * Validates given path as one, that has no extension
+     * @param {string} pathString input string containing absolute or relative path
+     * @returns {boolean}
+     * **true** if doesn't contain extension.
+     * **false** if contains extension.
+     */
+    validateDirectoryName(pathString) {
+        const parsedPath = path.parse(pathString);
+        return !(parsedPath.ext);
     }
 }
 
