@@ -2,10 +2,13 @@ import os from 'node:os'
 import path from 'node:path';
 import fs from 'node:fs/promises';
 
+const discRegex = /^.?:$/;
+
 class PathService {
     constructor(homePath) {
         this._homepath = homePath;
         this._cwd = homePath;
+        this._regex = new RegExp(discRegex, 'i');
     }
 
     get cwd() {
@@ -17,6 +20,9 @@ class PathService {
     }
 
     async cd(relativePath) {
+        if (this._regex.test(relativePath)) {
+            relativePath = path.join(relativePath, '/');
+        }
         const newPath = path.resolve(this._cwd, relativePath);
         await fs.access(newPath, fs.constants.R_OK);
         this._cwd = newPath;
