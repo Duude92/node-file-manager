@@ -15,7 +15,7 @@ const transformStream = new Transform({
         }
         try {
             const command = commandBuilder.getCommand(input);
-            const args = input.split(/["']([^"]+)["']|(\S+)/g).filter(val => !!val && !!(val.trim())).slice(1);
+            const args = input.split(/["']([^"']+)["']|(\S+)/g).filter(val => !!val && !!(val.trim())).slice(1);
             // const args = input.split(' ').slice(1);
             if (!command || !command.validateParameters(args)) {
                 const error = new Error(`Invalid input: ${input}${EOL}Usage: ${command.usage}${EOL}${EOL}${command.description}`);
