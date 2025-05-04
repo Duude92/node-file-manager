@@ -3,6 +3,8 @@ import {createBrotliDecompress} from 'node:zlib'
 import {createReadStream, createWriteStream} from 'node:fs';
 import {displayResultLine} from '#MessageManager';
 import {pipeline} from 'node:stream/promises';
+import fs from "node:fs/promises";
+import path from "node:path";
 
 class CommandDecompress extends CommandBase {
     constructor() {
@@ -17,7 +19,13 @@ class CommandDecompress extends CommandBase {
 
     async performCommand(args) {
         const sourcePath = this._pathHandler.resolvePath(args[0]);
-        const destinationPath = this._pathHandler.resolvePath(args[1]);
+        let destinationPath = this._pathHandler.resolvePath(args[1]);
+        if (this._pathHandler.validateDirectoryName(args[1])) {
+            // Empty catch if directory already exist
+            await fs.mkdir(destinationPath, {recursive: false}).catch(() => {});
+            const src = path.parse(sourcePath);
+            destinationPath = this._pathHandler.join(destinationPath, src.name);
+        }
         const sourceFile = createReadStream(sourcePath);
         const destinationFile = createWriteStream(destinationPath);
         const brotli = createBrotliDecompress();

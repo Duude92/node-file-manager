@@ -1,8 +1,9 @@
-import { CommandBase } from '#CommandBase';
-import { createBrotliCompress } from 'node:zlib'
-import { createReadStream, createWriteStream } from 'node:fs';
-import { displayResultLine } from '#MessageManager';
-import { pipeline } from 'node:stream/promises';
+import {CommandBase} from '#CommandBase';
+import {createBrotliCompress} from 'node:zlib'
+import {createReadStream, createWriteStream} from 'node:fs';
+import {displayResultLine} from '#MessageManager';
+import {pipeline} from 'node:stream/promises';
+import fs from "node:fs/promises";
 
 class CommandCompress extends CommandBase {
     constructor() {
@@ -10,13 +11,19 @@ class CommandCompress extends CommandBase {
         this._usage = `compress [FILENAME] [ARCHIVENAME]`;
         this._description = `Archives FILENAME into ARCHIVENAME`;
     }
+
     validateParameters(args) {
         return args.length > 1;
     }
 
     async performCommand(args) {
         const sourcePath = this._pathHandler.resolvePath(args[0]);
-        const destinationPath = this._pathHandler.resolvePath(args[1]);
+        let destinationPath = this._pathHandler.resolvePath(args[1]);
+        if (this._pathHandler.validateDirectoryName(args[1])) {
+            // Empty catch if directory already exist
+            await fs.mkdir(destinationPath, {recursive: false}).catch(() => {});
+            destinationPath = this._pathHandler.join(destinationPath, args[0] + '.br');
+        }
         const sourceFile = createReadStream(sourcePath);
         const destinationFile = createWriteStream(destinationPath);
         const brotli = createBrotliCompress();
@@ -24,4 +31,5 @@ class CommandCompress extends CommandBase {
         displayResultLine(`${sourcePath} compressed successfully into ${destinationPath}`);
     }
 }
+
 export const createCommand = () => new CommandCompress();
