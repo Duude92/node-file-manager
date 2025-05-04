@@ -39,12 +39,12 @@ class PathService {
 
     /**
      * Validates given path to 'name' only
-     * @param pathString input string containing directory name
+     * @param {string} pathString input string containing directory name
      * @returns {boolean}
      *  **true** if contains directory name only.
      *  **false** if contains path.
      */
-    validateDirectoryName(pathString) {
+    validateSingleDirectoryName(pathString) {
         const parsedPath = path.parse(pathString);
         return !(parsedPath.dir || parsedPath.root);
     }

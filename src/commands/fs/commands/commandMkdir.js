@@ -9,7 +9,7 @@ class CommandMkdir extends CommandBase {
     }
 
     validateParameters(args) {
-        return args.length > 0 && this._pathHandler.validateDirectoryName(args[0]);
+        return args.length > 0 && this._pathHandler.validateSingleDirectoryName(args[0]);
     }
 
     async performCommand(args) {
