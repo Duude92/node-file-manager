@@ -1,6 +1,7 @@
 import {CommandBase} from '#CommandBase';
 import fs from 'node:fs/promises';
 import {displayResultLine} from '#MessageManager';
+import {STRICT_COMMANDS} from "#AppConfig";
 
 class CommandAdd extends CommandBase {
     constructor() {
@@ -15,6 +16,7 @@ class CommandAdd extends CommandBase {
 
     async performCommand(args) {
         const filePath = this._pathHandler.resolvePath(args[0]);
+        if (STRICT_COMMANDS && !this._pathHandler.validateSingleFileName(args[0])) throw new Error('Should`ve provided filename without path');
         await fs.writeFile(filePath, '', {flag: 'wx'});
         displayResultLine(`File ${filePath} successfully created`);
     }

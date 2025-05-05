@@ -73,6 +73,18 @@ class PathService {
         const parsedPath = path.parse(pathString);
         return !(parsedPath.ext);
     }
+
+    /**
+     * Validates given path as one, that has no directory, filename only
+     * @param {string} pathString input file name
+     * @returns {boolean}
+     * **true** filename only.
+     * **false** if contains directory.
+     */
+    validateSingleFileName(pathString) {
+        const parsedPath = path.parse(pathString);
+        return !(parsedPath.dir);
+    }
 }
 
 const pathHandler = new PathService(os.homedir());
