@@ -9,7 +9,6 @@ class CommandCd extends CommandBase {
     }
 
     validateParameters(args) {
-        // Lead to Invalid input error if cd has no parameters
         return args.length > 0;
     };
 
