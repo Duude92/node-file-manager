@@ -5,6 +5,7 @@ import {displayResultLine} from '#MessageManager';
 import {pipeline} from 'node:stream/promises';
 import fs from "node:fs/promises";
 import path from "node:path";
+import fsPromise from "node:fs/promises";
 
 class CommandDecompress extends CommandBase {
     constructor() {
@@ -26,6 +27,7 @@ class CommandDecompress extends CommandBase {
             const src = path.parse(sourcePath);
             destinationPath = this._pathHandler.join(destinationPath, src.name);
         }
+        await fsPromise.access(sourcePath, fsPromise.constants.R_OK);
         const sourceFile = createReadStream(sourcePath);
         const destinationFile = createWriteStream(destinationPath);
         const brotli = createBrotliDecompress();

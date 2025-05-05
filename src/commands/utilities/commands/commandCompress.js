@@ -4,6 +4,7 @@ import {createReadStream, createWriteStream} from 'node:fs';
 import {displayResultLine} from '#MessageManager';
 import {pipeline} from 'node:stream/promises';
 import fs from "node:fs/promises";
+import fsPromise from "node:fs/promises";
 
 class CommandCompress extends CommandBase {
     constructor() {
@@ -24,6 +25,8 @@ class CommandCompress extends CommandBase {
             await fs.mkdir(destinationPath, {recursive: false}).catch(() => {});
             destinationPath = this._pathHandler.join(destinationPath, args[0] + '.br');
         }
+        // Should've separate repeated logic (compress/decompress)
+        await fsPromise.access(sourcePath, fsPromise.constants.R_OK);
         const sourceFile = createReadStream(sourcePath);
         const destinationFile = createWriteStream(destinationPath);
         const brotli = createBrotliCompress();
