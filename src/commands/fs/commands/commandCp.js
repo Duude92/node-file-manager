@@ -3,6 +3,7 @@ import {CommandBase} from '#CommandBase';
 import {pipeline} from 'node:stream/promises';
 import {displayResultLine} from '#MessageManager';
 import fsPromise from 'node:fs/promises';
+import path from "node:path";
 
 class CommandCp extends CommandBase {
     constructor() {
@@ -17,13 +18,17 @@ class CommandCp extends CommandBase {
 
     async performCommand(args) {
         const sourcePath = this._pathHandler.resolvePath(args[0]);
-        const destinationPath = this._pathHandler.resolvePath(args[1]);
+        let destinationPath = this._pathHandler.resolvePath(args[1]);
         // Test if sourcePath is accessible to read
         await fsPromise.access(sourcePath, fsPromise.constants.R_OK);
         if (!(await fsPromise.lstat(sourcePath)).isFile()) {
             await fsPromise.cp(sourcePath, destinationPath, {recursive: true});
             displayResultLine(`Directory content ${sourcePath} successfully copied to ${destinationPath}`);
             return;
+        }
+        if (this._pathHandler.validateDirectoryName(args[1])) {
+            const file = path.parse(sourcePath);
+            destinationPath = this._pathHandler.join(destinationPath, file.base);
         }
         const sourceStream = fs.createReadStream(sourcePath);
         const destinationStream = fs.createWriteStream(destinationPath, {flags: 'wx'});
