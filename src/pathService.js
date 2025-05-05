@@ -24,6 +24,8 @@ class PathService {
             relativePath = path.join(relativePath, '/');
         }
         const newPath = path.resolve(this._cwd, relativePath);
+        const fileStat = await fs.lstat(newPath);
+        if(!fileStat.isDirectory()) throw Error('Destination should be a directory');
         await fs.access(newPath, fs.constants.R_OK);
         this._cwd = newPath;
     }
