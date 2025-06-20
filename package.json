@@ -2,7 +2,13 @@
   "name": "file-manager",
   "version": "1.0.0",
   "description": "rsschool-nodejs-project",
-  "main": "index.mjs",
+  "main": "src/index.mjs",
+  "imports": {
+    "#CommandBase" : "./src/commands/commandbase.js",
+    "#MessageManager" : "./src/messages/messageManager.mjs",
+    "#AppConfig" : "./src/appconfig.js"
+  },
+  "type": "module",
   "scripts": {
     "start": "node src/index.mjs"
   },
