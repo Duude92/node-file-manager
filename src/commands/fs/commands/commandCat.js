@@ -1,7 +1,8 @@
-import { CommandBase } from '#CommandBase';
-import { createReadStream } from 'node:fs';
-import { pipeline } from 'node:stream/promises';
-import { EOL } from 'node:os';
+import {CommandBase} from '#CommandBase';
+import {createReadStream} from 'node:fs';
+import {pipeline} from 'node:stream/promises';
+import {EOL} from 'node:os';
+import {Export} from "@duude92/lazyinject";
 
 const encoding = 'utf8';
 
@@ -11,14 +12,16 @@ class CommandCat extends CommandBase {
         this._usage = `cat [FILE]`;
         this._description = 'Print FILE content to stdout';
     }
+
     validateParameters(args) {
         return args.length > 0;
     }
 
     async performCommand(args) {
         const filePath = this._pathHandler.resolvePath(args[0]);
-        await pipeline(createReadStream(filePath, encoding), process.stdout, { end: false });
+        await pipeline(createReadStream(filePath, encoding), process.stdout, {end: false});
         process.stdout.write(EOL);
     }
 }
-export const createCommand = () => new CommandCat();
+
+Export('FsCommandBase')(CommandCat);

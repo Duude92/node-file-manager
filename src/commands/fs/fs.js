@@ -1,5 +1,5 @@
-import { getCommands } from '../commandLoader.js';
+import {container} from "../../container.js";
 
+const fsCommands = container.getMany('FsCommandBase');
 
-const fsCommands = await getCommands("./fs/");
-export { fsCommands }
+export {fsCommands}

@@ -1,4 +1,5 @@
 import {CommandBase} from '#CommandBase';
+import {Export} from "@duude92/lazyinject";
 
 class CommandUp extends CommandBase {
     constructor() {
@@ -14,4 +15,4 @@ class CommandUp extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandUp();
+Export('FsCommandBase')(CommandUp);

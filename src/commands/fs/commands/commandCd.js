@@ -1,5 +1,6 @@
 import {CommandBase} from '#CommandBase';
 import {STRICT_COMMANDS} from '#AppConfig';
+import {Export} from "@duude92/lazyinject";
 
 class CommandCd extends CommandBase {
     constructor() {
@@ -22,4 +23,4 @@ class CommandCd extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandCd();
+Export('FsCommandBase')(CommandCd);

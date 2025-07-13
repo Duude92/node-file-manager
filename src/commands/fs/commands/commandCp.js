@@ -4,6 +4,7 @@ import {pipeline} from 'node:stream/promises';
 import {displayResultLine} from '#MessageManager';
 import fsPromise from 'node:fs/promises';
 import path from "node:path";
+import {Export} from "@duude92/lazyinject";
 
 class CommandCp extends CommandBase {
     constructor() {
@@ -37,4 +38,4 @@ class CommandCp extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandCp();
+Export('FsCommandBase')(CommandCp);

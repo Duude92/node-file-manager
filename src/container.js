@@ -8,6 +8,9 @@ const __directory = import.meta.dirname;
 const options = {
     baseDir: __directory,
     catalogs: []
+    catalogs: [
+        'commands/fs/commands',
+    ]
 }
 
 export const container = await ContainerFactory.create(options);

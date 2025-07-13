@@ -1,5 +1,6 @@
 import {CommandBase} from '#CommandBase';
 import fs from 'node:fs/promises';
+import {Export} from "@duude92/lazyinject";
 
 class CommandMkdir extends CommandBase {
     constructor() {
@@ -20,4 +21,4 @@ class CommandMkdir extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandMkdir();
+Export('FsCommandBase')(CommandMkdir);
