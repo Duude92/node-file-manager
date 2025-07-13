@@ -1,6 +1,7 @@
-import { displayResultLine } from '#MessageManager';
-import { CommandBase } from '#CommandBase';
-import { cpus } from 'node:os';
+import {displayResultLine} from '#MessageManager';
+import {CommandBase} from '#CommandBase';
+import {cpus} from 'node:os';
+import {Export} from "@duude92/lazyinject";
 
 class CommandCpus extends CommandBase {
     constructor() {
@@ -13,7 +14,8 @@ class CommandCpus extends CommandBase {
 CPU model: ${processors[0].model}
 CPU speed:
 ${processors.map((cpu, index) =>
-`   ${`CPU ${index}`.padEnd(8)} ${cpu.speed} MHz\n`).join('')}`);
+            `   ${`CPU ${index}`.padEnd(8)} ${cpu.speed} MHz\n`).join('')}`);
     }
 }
-export const createCommand = () => new CommandCpus();
+
+Export('OsCommandBase')(CommandCpus);

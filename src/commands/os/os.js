@@ -1,6 +1,6 @@
 import {CommandBase} from '#CommandBase';
-import {getCommands} from '../commandLoader.js';
 import {EOL} from 'node:os';
+import {container} from "../../container.js";
 
 // It is possible to compile usage with parameters.map=>parameter.usage \t parameter.description
 // But in my opinion, it wouldn't form such pretty usage text
@@ -12,7 +12,7 @@ Options:
     --username          Display the username of the current user.
     --architecture      Display the architecture of the operating system.`;
 
-const parameters = await getCommands('./os/');
+const parameters = container.getMany('OsCommandBase');
 
 class CommandOs extends CommandBase {
     constructor() {

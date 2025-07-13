@@ -1,6 +1,7 @@
-import { displayResultLine } from '#MessageManager';
-import { CommandBase } from '#CommandBase';
-import { EOL } from 'node:os';
+import {displayResultLine} from '#MessageManager';
+import {CommandBase} from '#CommandBase';
+import {EOL} from 'node:os';
+import {Export} from "@duude92/lazyinject";
 
 class CommandEol extends CommandBase {
     constructor() {
@@ -11,4 +12,5 @@ class CommandEol extends CommandBase {
         displayResultLine(`End of line character: ${JSON.stringify(EOL)}`);
     }
 }
-export const createCommand = () => new CommandEol();
+
+Export('OsCommandBase')(CommandEol);

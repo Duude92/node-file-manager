@@ -1,6 +1,7 @@
 import {displayResultLine} from '#MessageManager';
 import {CommandBase} from '#CommandBase';
 import os from 'node:os';
+import {Export} from "@duude92/lazyinject";
 
 class CommandUser extends CommandBase {
     constructor() {
@@ -12,4 +13,4 @@ class CommandUser extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandUser();
+Export('OsCommandBase')(CommandUser);
