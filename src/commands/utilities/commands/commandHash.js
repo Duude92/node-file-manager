@@ -2,6 +2,7 @@ import {CommandBase} from '#CommandBase';
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
 import {displayResultLine} from '#MessageManager';
+import {Export} from "@duude92/lazyinject";
 
 class CommandHash extends CommandBase {
     constructor() {
@@ -22,4 +23,4 @@ class CommandHash extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandHash();
+Export('UtCommandBase')(CommandHash);

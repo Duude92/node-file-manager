@@ -2,7 +2,6 @@ import {ContainerFactory} from "@duude92/lazyinject";
 
 const __directory = import.meta.dirname;
 /**
- *
  * @type IContainerOptions
  */
 const options = {
@@ -10,6 +9,7 @@ const options = {
     catalogs: [
         'commands/fs/commands',
         'commands/os/commands',
+        'commands/utilities/commands'
     ]
 }
 
