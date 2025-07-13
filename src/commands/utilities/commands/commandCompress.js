@@ -5,6 +5,7 @@ import {displayResultLine} from '#MessageManager';
 import {pipeline} from 'node:stream/promises';
 import fs from "node:fs/promises";
 import fsPromise from "node:fs/promises";
+import {Export} from "@duude92/lazyinject";
 
 class CommandCompress extends CommandBase {
     constructor() {
@@ -35,4 +36,4 @@ class CommandCompress extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandCompress();
+Export('UtCommandBase')(CommandCompress);

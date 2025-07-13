@@ -1,6 +1,7 @@
 import {CommandBase} from '#CommandBase';
 import {getFileType} from '../filetypeResolver.js';
 import {STRICT_COMMANDS} from '#AppConfig';
+import {Export} from "@duude92/lazyinject";
 
 class CommandLs extends CommandBase {
     constructor() {
@@ -24,4 +25,4 @@ class CommandLs extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandLs();
+Export('FsCommandBase')(CommandLs);

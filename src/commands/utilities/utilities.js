@@ -1,4 +1,5 @@
-import { getCommands } from '../commandLoader.js';
+import {container} from "../../container.js";
 
-const utilities = await getCommands("./utilities/");
+const utilities = container.getMany('UtCommandBase');
+
 export { utilities };

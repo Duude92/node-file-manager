@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import {pipeline} from 'node:stream/promises';
 import {displayResultLine} from '#MessageManager';
 import path from "node:path";
+import {Export} from "@duude92/lazyinject";
 
 class CommandMv extends CommandBase {
     constructor() {
@@ -33,4 +34,4 @@ class CommandMv extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandMv();
+Export('FsCommandBase')(CommandMv);

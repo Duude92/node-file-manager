@@ -1,6 +1,7 @@
 import {CommandBase} from '#CommandBase';
 import fs from 'node:fs/promises';
 import {displayResultLine} from '#MessageManager';
+import {Export} from "@duude92/lazyinject";
 
 class CommandRn extends CommandBase {
     constructor() {
@@ -30,4 +31,4 @@ class CommandRn extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandRn();
+Export('FsCommandBase')(CommandRn);

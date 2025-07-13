@@ -6,6 +6,7 @@ import {pipeline} from 'node:stream/promises';
 import fs from "node:fs/promises";
 import path from "node:path";
 import fsPromise from "node:fs/promises";
+import {Export} from "@duude92/lazyinject";
 
 class CommandDecompress extends CommandBase {
     constructor() {
@@ -23,7 +24,8 @@ class CommandDecompress extends CommandBase {
         let destinationPath = this._pathHandler.resolvePath(args[1]);
         if (this._pathHandler.validateDirectoryName(args[1])) {
             // Empty catch if directory already exist
-            await fs.mkdir(destinationPath, {recursive: false}).catch(() => {});
+            await fs.mkdir(destinationPath, {recursive: false}).catch(() => {
+            });
             const src = path.parse(sourcePath);
             destinationPath = this._pathHandler.join(destinationPath, src.name);
         }
@@ -36,4 +38,4 @@ class CommandDecompress extends CommandBase {
     }
 }
 
-export const createCommand = () => new CommandDecompress();
+Export('UtCommandBase')(CommandDecompress);
