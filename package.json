@@ -16,6 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@duude92/lazyinject": "^0.0.2"
+    "@duude92/lazyinject": "^0.0.3"
   }
 }
